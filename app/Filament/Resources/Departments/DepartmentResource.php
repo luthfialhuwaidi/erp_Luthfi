@@ -20,6 +20,7 @@ class DepartmentResource extends Resource
     protected static ?string $model = Department::class;
     protected static string|UnitEnum|null $navigationGroup = 'Human Resource Management';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::BuildingOffice2;
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $schema): Schema
     {
