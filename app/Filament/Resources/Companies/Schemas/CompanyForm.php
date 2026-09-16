@@ -14,16 +14,16 @@ class CompanyForm
         return $schema
             ->components([
                 Section::make('Company Information')
-                ->description('Please fill in the company information of your company')
-                ->columns(2)
-                ->columnSpan(3)
+                    ->description('Please fill in the company information of your company')
+                    ->columns(2)
+                    ->columnSpan(3)
                     ->schema([
                         TextInput::make('name')
-                        ->columnSpanFull()
+                            ->columnSpanFull()
                             ->required(),
 
                         TextInput::make('address')
-                        ->columnSpanFull()
+                            ->columnSpanFull()
                             ->required(),
 
                         TextInput::make('email')
@@ -35,19 +35,19 @@ class CompanyForm
                             ->tel()
                             ->required(),
                     ]),
-                
+
                 Section::make('Companies Logo')
-                ->description('Please upload the company logo')
+                    ->description('Please upload the company logo')
                     ->schema([
                         FileUpload::make('logo')
-                        ->image()
-                        ->disk('public')
-                        ->directory('logos')
-                        ->maxSize(1024)
-                        ->visibility('public'),
-                    ]), 
+                            ->image()
+                            ->disk('public')
+                            ->directory('logos')
+                            ->maxSize(1024)
+                            ->visibility('public'),
+                    ]),
 
-               
+
             ])->columns(4);
     }
 }
