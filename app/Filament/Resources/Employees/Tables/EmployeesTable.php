@@ -35,9 +35,6 @@ class EmployeesTable
                     ->label('Phone Number')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('phone_number')
-                    ->label('Phone Number')
-                    ->searchable(),
                 TextColumn::make('status')
                     ->label('Status')
                     ->sortable()
