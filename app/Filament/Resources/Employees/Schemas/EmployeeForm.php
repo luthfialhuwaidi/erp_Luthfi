@@ -8,6 +8,7 @@ use Filament\Forms\Components\Select;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\FileUpload;
 
 class EmployeeForm
 {
@@ -20,7 +21,7 @@ class EmployeeForm
                     ->columnSpan(2)
                     ->schema([
                         Group::make()
-                        ->relationship('user')
+                            ->relationship('user')
                             ->schema([
                                 TextInput::make('name')
                                     ->placeholder('Enter name')
@@ -33,8 +34,8 @@ class EmployeeForm
                                     ->placeholder('Enter password')
                                     ->required()
                                     ->password(),
-                                    ]),
                             ]),
+                    ]),
                 Select::make('user_id')
                     ->relationship('user', 'name')
                     ->searchable()
@@ -86,6 +87,13 @@ class EmployeeForm
                         'x' => 'X',
                     ])
                     ->nullable(),
-                    ]);
+                FileUpload::make('image')
+                    ->label('Foto')
+                    ->image()
+                    ->disk('public')
+                    ->directory('foto-user')
+                    ->visibility('public')
+                    ->imageEditor(),
+            ]);
     }
 }
