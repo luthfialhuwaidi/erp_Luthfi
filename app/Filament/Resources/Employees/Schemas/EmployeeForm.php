@@ -5,6 +5,8 @@ namespace App\Filament\Resources\Employees\Schemas;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class EmployeeForm
@@ -13,11 +15,31 @@ class EmployeeForm
     {
         return $schema
             ->components([
+                Section::make('User Information')
+                    ->icon('heroicon-o-user')
+                    ->columnSpan(2)
+                    ->schema([
+                        Group::make()
+                        ->relationship('user')
+                            ->schema([
+                                TextInput::make('name')
+                                    ->placeholder('Enter name')
+                                    ->required(),
+                                TextInput::make('email')
+                                    ->placeholder('Enter email')
+                                    ->label('Email Address')
+                                    ->required(),
+                                TextInput::make('password')
+                                    ->placeholder('Enter password')
+                                    ->required()
+                                    ->password(),
+                                    ]),
+                            ]),
                 Select::make('user_id')
                     ->relationship('user', 'name')
                     ->searchable()
                     ->preload()
-                    ->required(),
+                    ->nullable(),
                 Select::make('department_id')
                     ->relationship('department', 'name')
                     ->searchable()
@@ -64,6 +86,6 @@ class EmployeeForm
                         'x' => 'X',
                     ])
                     ->nullable(),
-            ]);
+                    ]);
     }
 }
