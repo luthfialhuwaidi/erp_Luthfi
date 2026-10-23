@@ -18,19 +18,20 @@ use UnitEnum;
 class CompanyResource extends Resource
 {
     protected static ?string $model = Company::class;
-    protected static string|UnitEnum|null $navigationGroup = 'Settings';
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::BuildingOffice;
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static string | UnitEnum | null $navigationGroup = 'Settings';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::BuildingOffice2;
 
     public static function form(Schema $schema): Schema
     {
         return CompanyForm::configure($schema);
     }
 
-   public static function table(Table $table): Table
+    public static function table(Table $table): Table
     {
+        $table->paginated(true);//hilangkan paginate
         return CompaniesTable::configure($table);
     }
+
     public static function getRelations(): array
     {
         return [

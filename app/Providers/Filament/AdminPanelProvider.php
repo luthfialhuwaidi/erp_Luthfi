@@ -29,8 +29,15 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Teal,
+                'secondary' => Color::Gray,
+                'success' => Color::Green,
+                'warning' => Color::Yellow,
+                'danger' => Color::Red,
+                'info' => Color::Blue,
             ])
+            ->brandName('Enterprise')
+            ->globalSearch(false)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
@@ -55,9 +62,14 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
+            ->spa() // Opsional: membuat navigasi lebih cepat tanpa reload halaman
+            ->sidebarCollapsibleOnDesktop() // Membuat sidebar bisa di-collapse (minimize) jadi ikon saja di desktop
+            ->sidebarFullyCollapsibleOnDesktop()
             ->navigationGroups([
-                'Human Resource Management',
-                'Settings',
+                'Skills',
+                'Human Resources Management',
+                'Inventory',
+                'Settings'
             ]);
     }
 }

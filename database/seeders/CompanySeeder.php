@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Company;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Company;
 
 class CompanySeeder extends Seeder
 {
@@ -13,11 +13,13 @@ class CompanySeeder extends Seeder
      */
     public function run(): void
     {
+        // buat satu perusahaan contoh 'name', 'address', 'email', 'phone_number', 'logo'
         Company::create([
-            'name' => 'PT Real Estate',
-            'address' => 'Jl. Jendral Sudirman No. 123, Pekanbaru, Riau',
-            'email' => 'realestate@erp.com',
+            'name' => 'PT Mencari Duit',
+            'address' => 'Jl. Cempaka No. 123',
+            'email' => 'info-duit@example.com',
             'phone_number' => '081234567890',
+            'logo' => 'logo.png',
         ]);
     }
 }

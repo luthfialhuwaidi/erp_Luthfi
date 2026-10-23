@@ -7,19 +7,21 @@ use App\Filament\Resources\Positions\Pages\EditPosition;
 use App\Filament\Resources\Positions\Pages\ListPositions;
 use App\Filament\Resources\Positions\Schemas\PositionForm;
 use App\Filament\Resources\Positions\Tables\PositionsTable;
-use App\Models\Positions;
+use App\Models\Position;
 use BackedEnum;
-use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class PositionResource extends Resource
 {
-    protected static ?string $model = Positions::class;
-    protected static string | UnitEnum | null $navigationGroup = 'Human Resource Management';
-    protected static string | BackedEnum | null $navigationIcon = Heroicon::UserGroup;
+    protected static ?string $model = Position::class;
+    protected static string|UnitEnum|null $navigationGroup = 'Human Resources Management';
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::Users;
+
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $schema): Schema

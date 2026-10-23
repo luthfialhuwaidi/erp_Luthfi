@@ -8,7 +8,6 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Nette\Utils\ImageColor;
 
 class EmployeesTable
 {
@@ -17,26 +16,29 @@ class EmployeesTable
         return $table
             ->columns([
                 ImageColumn::make('image')
-                    ->label('picture')
+                    ->label('Picture')
                     ->disk('public')
-                    ->visibility('public'),
-                TextColumn::make('user.name')
+                    ->visibility('public')
+                    ->width(60)
+                    ->height(60)
+                    ->circular(),
+                TextColumn::make('user.name')//user.name mengambil nilai dari relasi user
                     ->label('Name')
-                    ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('position.name')
-                    ->label('Position')
+                    ->label('Position Name')
+                    ->sortable()
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('user.email')
-                    ->label('Email Address')
+                    ->label('Email')
+                    ->sortable()
                     ->searchable(),
-                    TextColumn::make('phone_number')
-                    ->label('Phone Number')
-                    ->searchable()
-                    ->sortable(),
+                TextColumn::make('phone_number')
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('status')
-                    ->label('Status')
                     ->sortable()
                     ->searchable(),
             ])
